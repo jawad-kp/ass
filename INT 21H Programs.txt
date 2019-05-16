@@ -1,0 +1,58 @@
+INT 21H Programs
+
+Option 09H - Output a string of Characters
+
+	.DATA
+		STUFF	DB	"REDDIT GOOD INSTAGRAM BAAAD$"
+
+	.CODE
+		MOV AH,09H;	The Interrupt Code
+		LEA DX, STUFF; Loading our string
+		INT 21H
+
+
+
+Option 02H - Output a single character
+
+	.CODE
+
+		MOV AH, O2H;   The Interrupt Code
+		MOV DX, '!'; Loading our Character
+		INT 21H
+
+
+Option 01H - Input a single character with echo
+
+	.CODE
+		MOV AH, 01H
+		INT 21H; Input is Saved in AL
+
+Option 07H - Input a single character without echo
+	
+	.CODE
+		MOV AH, 07H
+		INT 21H; Input is Saved in AL
+
+
+Option 0AH - Input a String
+
+
+	.DATA
+
+		ORG 0010H
+
+		HEY	DB	6,?,6 DUP(FF)
+
+	.CODE
+
+		MOV AH, 0AH
+		LEA DX, HEY
+		INT 21H
+
+	Before execution
+	0010	0011	0012	0013	0014	0015	0016	0017
+	06		00		FF		FF		FF		FF		FF		FF
+
+	After Execution
+	0010	0011			0012		0013		0014	0015	0016	0017
+	06		<no of chars>	<char 1> 	<char 2>...							<char 6>

@@ -1,0 +1,7 @@
+Code to get current cursor Position
+
+	MOV AH, 03H; Option to get interrupt
+	MOV BH, 00; Page 00
+	INT 10H
+
+After execution DH(row) and DL(Column) and CX has shape of cursor

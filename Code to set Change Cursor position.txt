@@ -1,0 +1,9 @@
+Code to set Change Cursor position
+
+.CODE
+
+	MOV AH, 02H; Set cursor option
+	MOV BH, 00H; Page 0
+	MOV DL, 19H; Setting Column
+	MOV DH, 0FH; Setting Row
+	INT 10H

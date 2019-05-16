@@ -1,0 +1,16 @@
+Program to change a background and foreground
+
+	MOV AH, 00H; Set Mode
+	MOV AL, 03H; CGA otpion is selected
+	INT 10H
+
+	MOV AH, 09H; Display Option
+	MOV BH, 00H; Page you want to modify
+
+	MOV AL, <Character you want to output in hex>; 	Use 20H to O/P space which will give a blank screen
+
+	MOV CX, 07D0H;	INT 10H modifies a space of 80 x 25 which is 2000 characters
+	; 2000 in hex is 07D0H. So You're printing whatever character you want over all the space
+
+	MOV BL, <colour attribute>
+	INT 10H
